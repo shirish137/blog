@@ -1,0 +1,83 @@
+{% include 'header.html' %}
+
+            <!--- Main sectin Start-->
+            <div class="row mt-5">
+              
+              <div class="col-md-3">
+                <p>Hi,<strong>{{user.first_name}}</strong></p>
+                <a href="/createblog">
+                  <button class="btn btn-danger">Create Blog</button>
+                </a>
+                <br><hr><br>
+                <h5>Filter By Category</h5>
+                <hr>
+                <a href="" class="anchor">Programming |</a>
+                <a href="" class="anchor">Data science |</a>
+                <a href="" class="anchor">Travel |</a>
+                <a href="" class="anchor">Video editing</a>
+              </div><!--- Create blog and category end-->
+
+              <div class="col-md-9">
+                      <table class="table table-hover">
+                              <tr>
+                                   <th>Sr.No</th>
+                                   <th>Blog Title</th>
+                                   <th>Category</th>
+                                   <th>Edit</th>
+                                   <th>Delete</th>
+                                   <th>Details</th>
+                              </tr>
+                       {% for x in blogs %}
+                              <tr>
+                                   <td>{{x.id}}</td>
+                                   <td>{{x.title}}</td>
+
+                                   {% if x.cat == 1 %}
+                                   <td>Python</td>
+                                   {% elif x.cat ==  2 %}
+                                   <td>Data Science</td>
+                                   {% elif x.cat == 3 %}
+                                   <td>Data Analyst</td>
+                                   {% else %}
+                                   <td>Java</td>
+                                   {% endif %}
+
+
+
+                                   <td>
+                                         <a href="/edit/{{x.id}}">
+                                                <button class="btn btn-warning">
+                                                     Edit
+                                                </button>
+                                         </a>
+                                   </td>
+                                   <td>
+                                    <a href="/delete/{{x.id}}">
+                                           <button class="btn btn-danger">
+                                                Delete
+                                           </button>
+                                    </a>
+                                  </td>
+
+                                  <td>
+                                    <a href="/see_det/{{x.id}}">
+                                           <button class="btn btn-success">
+                                                See details
+                                           </button>
+                                    </a>
+                                  </td>
+                              </tr>
+                        {% endfor %}
+                             
+                      </table>
+              </div>
+
+            </div> 
+            
+               
+
+            <!--- Main section End-->
+
+{% include 'footer.html' %}
+
+           
